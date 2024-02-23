@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css"/>
+<title>User Images</title>
+
+</head>
+<body>
+    <div><h2 class="title">Select Doctors</h2></div>
+
+<div id="imageContainer"></div>
+
+  
+<script>
+  // Sample JSON data with image URLs
+  var jsonData = [
+    { "title": "Dr. Alexa", "description": "Dental Consultant", "image": "https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg" },
+    { "title": "Dr. Bob", "description": "Orthologist", "image": "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg" },
+    { "title": "Dr. Alice", "description": "Sr Orthologist", "image": "https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg=" },
+    { "title": "Dr. Merlina", "description": "Dental Consultant", "image": "https://www.shutterstock.com/image-photo/medical-concept-indian-beautiful-female-600nw-1635029716.jpg"},
+    { "title": "Dr. Berlin", "description": "Orthologist", "image": "https://thumbs.dreamstime.com/b/portrait-indian-doctor-portrait-male-indian-doctor-serious-expression-crossed-arms-wearing-white-coat-having-open-137577527.jpg" },
+    { "title": "Dr. Mann", "description": "Sr Orthologist", "image": "https://t4.ftcdn.net/jpg/03/20/52/31/360_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg" },
+    { "title": "Dr. Alina", "description": "Dental Consultant", "image": "https://plus.unsplash.com/premium_photo-1664475450083-5c9eef17a191?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmVtYWxlJTIwZG9jdG9yfGVufDB8fDB8fHww" },
+    { "title": "Dr. Bolt", "description": "Orthologist", "image": "https://img.freepik.com/free-photo/portrait-confident-male-doctor_329181-12190.jpg" },
+    { "title": "Dr. Vince", "description": "Sr Orthologist", "image": "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1708646400&semt=sph" },
+    { "title": "Dr. Ennie", "description": "Dental Consultant", "image": "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg" },
+    { "title": "Dr. Barbie", "description": "Orthologist", "image": "https://img.freepik.com/premium-photo/medical-concept-indian-beautiful-female-doctor-white-coat-with-stethoscope-waist-up-medical-student-woman-hospital-worker-looking-camera-smiling-studio-blue-background_185696-621.jpg" },
+    { "title": "Dr. Miller", "description": "Sr Orthologist", "image": "https://static.vecteezy.com/system/resources/thumbnails/030/928/115/small/handsome-indian-doctor-generate-ai-photo.jpg" },
+    { "title": "Dr. Alexa", "description": "Dental Consultant", "image": "https://img.freepik.com/free-photo/beautiful-young-female-doctor-looking-camera-office_1301-7807.jpg" },
+    { "title": "Dr. Bob", "description": "Orthologist", "image": "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg" },
+    { "title": "Dr. Alice", "description": "Sr Orthologist", "image": "https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg=" },
+    { "title": "Dr. Merlina", "description": "Dental Consultant", "image": "https://www.shutterstock.com/image-photo/medical-concept-indian-beautiful-female-600nw-1635029716.jpg"},
+    { "title": "Dr. Berlin", "description": "Orthologist", "image": "https://thumbs.dreamstime.com/b/portrait-indian-doctor-portrait-male-indian-doctor-serious-expression-crossed-arms-wearing-white-coat-having-open-137577527.jpg" },
+    { "title": "Dr. Mann", "description": "Sr Orthologist", "image": "https://t4.ftcdn.net/jpg/03/20/52/31/360_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg" },
+    { "title": "Dr. Alina", "description": "Dental Consultant", "image": "https://plus.unsplash.com/premium_photo-1664475450083-5c9eef17a191?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmVtYWxlJTIwZG9jdG9yfGVufDB8fDB8fHww" },
+    { "title": "Dr. Bolt", "description": "Orthologist", "image": "https://img.freepik.com/free-photo/portrait-confident-male-doctor_329181-12190.jpg" },
+    { "title": "Dr. Vince", "description": "Sr Orthologist", "image": "https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg?size=626&ext=jpg&ga=GA1.1.1700460183.1708646400&semt=sph" },
+    { "title": "Dr. Ennie", "description": "Dental Consultant", "image": "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg" },
+    { "title": "Dr. Barbie", "description": "Orthologist", "image": "https://img.freepik.com/premium-photo/medical-concept-indian-beautiful-female-doctor-white-coat-with-stethoscope-waist-up-medical-student-woman-hospital-worker-looking-camera-smiling-studio-blue-background_185696-621.jpg" },
+    { "title": "Dr. Miller", "description": "Sr Orthologist", "image": "https://static.vecteezy.com/system/resources/thumbnails/030/928/115/small/handsome-indian-doctor-generate-ai-photo.jpg" },
+    { "title": "Dr. Alice", "description": "Sr Orthologist", "image": "https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg=" }
+    
+];
+
+  // Function to create card elements
+  function createCard(title, description, imageUrl) {
+    var cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
+
+    var image = document.createElement("img");
+    image.src = imageUrl;
+
+    var titleElement = document.createElement("h3");
+    titleElement.textContent = title;
+
+    var descriptionElement = document.createElement("p");
+    descriptionElement.textContent = description;
+
+    cardDiv.appendChild(image);
+    cardDiv.appendChild(titleElement);
+    cardDiv.appendChild(descriptionElement);
+
+    return cardDiv;
+  }
+
+  // Function to load images from JSON data
+  function loadImages(data) {
+    var imageContainer = document.getElementById("imageContainer");
+
+    data.forEach(function(item) {
+      var card = createCard(item.title, item.description, item.image);
+      imageContainer.appendChild(card);
+    });
+  }
+
+  // Load images when the page is ready
+  document.addEventListener("DOMContentLoaded", function() {
+    loadImages(jsonData);
+  });
+</script>
+
+</body>
+</html>
