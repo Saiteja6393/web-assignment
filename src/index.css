@@ -1,0 +1,34 @@
+.heading{
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: aquamarine;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: x-large;
+}
+
+.headline {
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.headline h3 {
+  margin-top: 0;
+}
+
+.headline p {
+  margin-bottom: 5px;
+}
+
+.headline:hover {
+  background-color: #e0e0e0; /* Change background color on hover */
+  transform: scale(1.0, 1.1);
+}
+
